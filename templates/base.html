@@ -67,9 +67,9 @@
 </header>
 {% url 'search-page' as search_url %}
 {% if request.path == search_url %}
-    <main role="main" class="container mx-auto">
+    <main role="main" class="container-fluid">
 {% else %}
-    <main role="main" class="container">
+    <main role="main" class="container-fluid">
 {% endif %}
 <div class="mx-auto w-1">
     {% if messages %}
@@ -94,10 +94,10 @@
                     <div class="single-footer f-about">
                         <div class="logo">
                             <a href="">
-                                <img src="{% static 'img/logo_4.png' %}" alt="#">
+                                <img src="{% static 'img' %}" alt="#">
                             </a>
                         </div>
-                        <p>The True Gospel Through Sharing Ideas.</p>
+                        <p>The Ripple Effect</p>
                         <ul class="social">
                             <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
                             <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>

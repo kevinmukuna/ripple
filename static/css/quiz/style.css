@@ -1,0 +1,135 @@
+.breadcrumbs {
+  position: relative;
+  padding-bottom: 100px;
+  padding-top: 180px;
+  z-index: 2;
+  text-align: left;
+  background-color: #050e17e0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .breadcrumbs {
+    padding-bottom: 60px;
+    padding-top: 120px;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumbs {
+    padding-bottom: 60px;
+    padding-top: 120px;
+  }
+}
+
+.breadcrumbs .breadcrumbs-content {
+  position: relative;
+  text-align: center;
+}
+
+.breadcrumbs .breadcrumbs-content .page-title {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+  line-height: 50px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .breadcrumbs .breadcrumbs-content .page-title {
+    font-size: 28px;
+    line-height: 42px;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumbs .breadcrumbs-content .page-title {
+    font-size: 25px;
+    line-height: 38px;
+  }
+}
+
+.breadcrumbs .breadcrumbs-content .breadcrumb-nav {
+  background: transparent;
+  border-radius: 0;
+  margin-bottom: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.breadcrumbs .breadcrumb-nav {
+  text-align: center;
+  margin-top: 15px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .breadcrumbs .breadcrumb-nav {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumbs .breadcrumb-nav {
+    margin-top: 8px;
+  }
+}
+
+.breadcrumbs .breadcrumb-nav li {
+  display: inline-block;
+  position: relative;
+  padding-right: 15px;
+  margin-right: 15px;
+  text-transform: capitalize;
+}
+
+.breadcrumbs .breadcrumb-nav li:after {
+  content: "\ea5c";
+  font-family: lineIcons;
+  font-size: 10px;
+  position: absolute;
+  top: 4px;
+  right: -7px;
+}
+
+.breadcrumbs .breadcrumb-nav li:last-child {
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs .breadcrumb-nav li:last-child::after {
+  display: none;
+}
+
+.breadcrumbs .breadcrumb-nav li,
+.breadcrumbs .breadcrumb-nav li a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.breadcrumbs .breadcrumb-nav li a {
+  position: relative;
+}
+
+.breadcrumbs .breadcrumb-nav li a:hover {
+  text-decoration: underline;
+}
+
+.section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
