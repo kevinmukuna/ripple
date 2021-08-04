@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 ######################################################################
-# (Kevin Mukuna, Augustt 2021)
+# (Kevin Mukuna, August 2021)
 #
 # Authentication script. The script below is used for registering
 # users,validated users and login
@@ -261,6 +261,7 @@ def profile(request, username):
     both forms are valid regardless of which form is changed
 
     :param request:
+    :param username:
     :return: if updated redirect
     """
 
