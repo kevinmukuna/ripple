@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="mx-auto w-50">
+        <div class="content-section">
+            <form action="{% url 'register-page' %}" method="post" class="border-bottom mb-8">
+                {% csrf_token %}
+                <legend class="border-bottom mb-4">Register a free account</legend>
+                <div class="mx-auto w-75">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="username"
+                            placeholder="username"
+                            id="usernameField"
+                            value="{{fieldValues.username}}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
+                <div class="invalid_feedback invalid-feedback" style="display:none"></div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="first_name"
+                            placeholder="First Name"
+                            id="first_name"
+                            value="{{fieldValues.first_name}}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="last_name"
+                            placeholder="Last Name"
+                            id="last_name"
+                            value="{{fieldValues.last_name}}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            class="textinput textInput form-control"
+                            id="emailField"
+                            value="{{fieldValues.email}}"
+                    />
+                </div>
+
+                <div class="emailFeedBackArea invalid-feedback" style="display:none">
+                </div>
+
+                <div class="form-group">
+                    <input
+
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            class="textinput textInput form-control"
+                            id="passwordField"
+                    />
+                    
+                </div>
+                <div class="passwordFeedBackArea invalid-feedback" style="display:none">
+                </div>
+
+                <small class="float-right py-3 showPasswordToggle">SHOW PASSWORD</small>
+
+                <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn" style="background: #5f788a; border: none" />
+            </form>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Already Have an Account? <a class="ml-2" href="{% url 'login' %}">Login</a>
+                </small>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock content %}

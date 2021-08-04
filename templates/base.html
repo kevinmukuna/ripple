@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightslider.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lightgallery.min.css' %}">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!--    -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <title>Ripple</title>
+</head>
+<body>
+<header class="site-header">
+    <nav id="nav" class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+            <!--href="{% url 'home-page' %} this saves us form having to hardcode the absolute path-->
+            <a class="navbar-brand mr-4" href="{% url 'home-page' %}">
+                <img style="height: 23px;width:25px; vertical-align: before-edge;" src="{% static 'logo2.png' %}">
+                <span>Ripple</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'home-page' %}">Home</a>
+                    <a class="nav-item nav-link" href="{% url 'about-page' %}">About</a>
+                    <a class="nav-item nav-link" href="{% url 'userguide' %}">Guide</a>
+                    <a class="nav-item nav-link" href="{% url 'contact_us' %}">Contact Us</a>
+                    {% url 'home-page' as home_url %}
+                    {% url 'login-page' as login_url %}
+                    {% url 'register-page' as register_url %}
+                    {% url 'logout' as logout_url %}
+                </div>
+                <!-- Navbar Right Side -->
+                <!-- conditional statement to either display login/logout page if a user is authenticated or -->
+                <div class="navbar-nav">
+                    {% if request.user.is_authenticated %}
+                        <a class="nav-item nav-link" href="">Lessons</a>
+                        <a class="nav-item nav-link" href="{% url 'quiz:main-view' %}">Quiz</a>
+                        <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                        <a class="nav-item nav-link" href="{% url 'profile-page' request.user.username %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'logout-page' %}">Logout</a>
+
+                    {% else %}
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-item nav-link" href="{% url 'register-page' %}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+{% url 'search-page' as search_url %}
+{% if request.path == search_url %}
+    <main role="main" class="container mx-auto">
+{% else %}
+    <main role="main" class="container">
+{% endif %}
+<div class="mx-auto w-1">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% block content %}
+
+{% endblock %}
+<div class="push"></div>
+
+</main>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="single-footer f-about">
+                        <div class="logo">
+                            <a href="">
+                                <img src="{% static 'img/logo_4.png' %}" alt="#">
+                            </a>
+                        </div>
+                        <p>The True Gospel Through Sharing Ideas.</p>
+                        <ul class="social">
+                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-pinterest"></i></a></li>
+                        </ul>
+                        <p class="copyright-text">Designed and Developed by <a href=""
+                                                                               rel="nofollow"
+                                                                               target="_blank">Kevin Mukuna</a>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-md-8 col-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="single-footer f-link">
+                                <h3>Goal</h3>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Link1</a></li>
+                                    <li><a href="javascript:void(0)">Link1</a></li>
+                                    <li><a href="javascript:void(0)">Link1</a></li>
+                                    <li><a href="javascript:void(0)">Link1</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="single-footer f-link">
+                                <h3>Support</h3>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Help</a></li>
+                                    <li><a href="javascript:void(0)">Guides</a></li>
+                                    <li><a href="javascript:void(0)">Our Blog</a></li>
+                                    <li><a href="javascript:void(0)">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="single-footer f-link">
+                                <h3>Our Team</h3>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Home</a></li>
+                                    <li><a href="javascript:void(0)">About Us</a></li>
+                                    <li><a href="javascript:void(0)">Contact Us</a></li>
+                                    <li><a href="javascript:void(0)">Our Blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="single-footer f-link">
+                                <h3>Legal</h3>
+                                <ul>
+                                    <li><a href="javascript:void(0)">Terms & Conditions</a></li>
+                                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-newsletter">
+        <div class="container">
+            <div class="inner-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-5 col-12">
+                        <div class="title">
+                            <h3>Subscribe to our newsletter</h3>
+                            <p>The latest news, articles, and resources, sent to your inbox weekly.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-7 col-12">
+                        <div class="form">
+                            <form action="#" method="get" target="_blank" class="newsletter-form">
+                                <input name="EMAIL" placeholder="Your email address" type="email">
+                                <div class="button">
+                                    <button class="btn">Subscribe<span class="dir-part"></span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/highcharts/highcharts.js' %}"></script>
+<!-- LightSlider, LightGallery JS -->
+<script type="text/javascript" src="{% static 'js/lightslider.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
+
+<!-- Slider and thumbnails -->
+<script type="text/javascript" src="{% static 'js/customslider.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/tiny-slider.js' %}"></script>
+<script src="{% static 'js/glightbox.min.js' %}"></script>
+<script src="{% static 'js/count-up.min.js' %}"></script>
+<script src="{% static 'js/isotope.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript">
+    //========= testimonial
+    tns({
+        container: '.testimonial-slider',
+        items: 3,
+        slideBy: 'page',
+        autoplay: false,
+        mouseDrag: true,
+        gutter: 0,
+        nav: true,
+        controls: false,
+        controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
+        responsive: {
+            0: {
+                items: 1,
+            },
+            540: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            992: {
+                items: 1,
+            },
+            1170: {
+                items: 1,
+            }
+        }
+    });
+
+    //====== counter up
+    var cu = new counterUp({
+        start: 0,
+        duration: 2000,
+        intvalues: true,
+        interval: 100,
+        append: " ",
+    });
+    cu.start();
+    //============== isotope masonry js with imagesloaded
+    imagesLoaded('#container', function () {
+        var elem = document.querySelector('.grid');
+        var iso = new Isotope(elem, {
+            // options
+            itemSelector: '.grid-item',
+            masonry: {
+                // use outer width of grid-sizer for columnWidth
+                columnWidth: '.grid-item'
+            }
+        });
+
+        let filterButtons = document.querySelectorAll('.portfolio-btn-wrapper button');
+        filterButtons.forEach(e =>
+            e.addEventListener('click', () => {
+
+                let filterValue = event.target.getAttribute('data-filter');
+                iso.arrange({
+                    filter: filterValue
+                });
+            })
+        );
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    <div class="content-section row mx-auto">
+        <div>
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" />
+        </div>
+        <div class="d-flex flex-column my-auto">
+            <h2>{{ user.username }}</h2>
+            {% if request.user.is_authenticated %}
+            <p class="text-secondary">{{ user.email }}</p>
+            {% else %}
+            <p class="text-secondary">Log-in to contact or comment on {{ user.username }}'s post</p>
+            {% endif %}
+            <!--  the button is used for overlay curtain display      -->
+        {% if request.user.username == user.username %}
+            <div>
+                <button class="btn btn-outline-info" onclick="openNav()">Edit Profile</button>
+            </div>
+
+
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="overlay-content">
+                    <!-- FORM HERE -->
+                    <!-- enctype is used for saving images in data    -->
+                    <div class="container">
+                        <form method="POST" enctype="multipart/form-data" class="update-profile">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">Profile Info</legend>
+                                {{ u_form|crispy }}
+                                {{ p_form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-outline-info" type="submit">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2 class="mb-3">{{ user.username }}'s Posts</h2>
+        {% if user.user_posts.all %}
+            {% for post in user.user_posts.all reversed %}
+                {% include 'webpages/short_post.html' %} 
+            {% endfor %}
+            {% include 'webpages/pagination.html' %}
+        {% else %}
+            <p>{{ user.username }} has no post</p>
+        {% endif %}
+    </div>
+        
+
+    {% if request.user.username == user.username %}
+        <div class="content-section mx-auto">
+            <h2>Message</h2>
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% else %}
+                <p>You have no message</p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- the css section for the overlays opening and closing   -->
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+</div>
+{% endblock content %}

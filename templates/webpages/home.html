@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load embed_video_tags %}
+{% load static %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- Search bar and background -->
+<div class="home-background"></div>
+<div class="home-search d-flex flex-column">
+    <h1 class="text-center mb-4 pb-4 mt-auto">Tssidkenu Prayers</h1>
+    <!-- Search Bar -->
+    <section class="mt-4 mx-auto pt-4 w-75 mb-auto">
+        <h3 class="text-center">Find previous bible study</h3>
+        <form method="GET" action="/search/" id="getsearchResults">
+            <div class="input-group">
+                <input
+                        name="q"
+                        type="search"
+                        class="form-control"
+                        placeholder="Search author, title or keyword"
+                        aria-label="Search"
+                        id="searchBar"
+                        aria-describedby="search-addon" />
+                <button class="btn btn-outline-light search-btn" type="submit">Search</button>
+            </div>
+        </form>
+    </section>
+</div>
+    
+<!-- List Posts -->
+
+<section class="mx-auto my-5" id="all_posts" >
+    <h2 class="text-center">Latest Bible Studies</h2>
+    {% for post in posts %}
+    {% include 'webpages/short_post.html' %}
+    {% endfor %}
+    {% include 'webpages/pagination.html' %}
+</section>
+
+<!--do not delete this empty section is used for the result of the search bar-->
+<section class="my-4 pb-5" id="search_posts_output">
+
+</section>
+<!--  paginating page s  -->
+
+<script src="{% static 'js/searchbar.js' %}"></script>
+{% endblock content %}

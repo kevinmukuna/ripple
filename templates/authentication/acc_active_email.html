@@ -1,0 +1,11 @@
+{% autoescape off %}
+Hi {{ user.username }},
+Please click on the link to confirm your registration,
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+<script>
+    setTimeout(function(){
+        window.location.href = 'http://127.0.0.1/8000/login';
+    }, 2000);
+</script>
+<!--<p>Web page redirects after 5 seconds.</p>-->
+{% endautoescape %}
