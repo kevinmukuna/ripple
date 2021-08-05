@@ -40,79 +40,50 @@
         <!-- Information of the Property -->
         <h3 class="article-title mt-5"><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post }}</a></h3>
 
-        <h4>Question 1 : {{ post.question1 }}</h4>
-        <h4>Question 2 : {{ post.question2 }}</h4>
-        <h4>Question 3 : {{ post.question3 }}</h4>
-
         <div class="row my-5 border-top border-bottom py-3">
             <div class="col-md-3 my-auto">
-                <small>Property type</small>
-                <div><i class="fas fa-home"></i> {{ post.property_type }}</div>
+                <small>Material type</small>
+                <div><i class=""></i> {{ post.question1 }}</div>
             </div>
             <div class="col-md-3 my-auto">
-                <small>Size</small>
-                <div><i class="fas fa-home"></i> {{ post.size }}m<sup>2</sup></div>
+                <small>Clothing type</small>
+                <div><i class=""></i>{{ post.question1 }}</div>
             </div>
             <div class="col-md-3 my-auto">
-                <small>Bedrooms</small>
-                <div><i class="fas fa-bed"></i> {{ post.number_of_bedrooms }}</div>
+                <small>Available quantity</small>
+                <div><i class="f"></i> {{ post.question1 }}</div>
             </div>
             <div class="col-md-3 my-auto">
-                <small>Bathrooms</small>
-                <div><i class="fas fa-bath"></i> {{ post.number_of_bathrooms }}</div>
+                <small>Available</small>
+                <div><i class=""></i> {{ post.question1 }} </div>
+            </div>
+        </div>
+        <div class="row my-5 border-top border-bottom py-3">
+            <div class="col-md-3 my-auto">
+                <small>Material type</small>
+                <div><i class=""></i> {{ post.question1 }}</div>
+            </div>
+            <div class="col-md-3 my-auto">
+                <small>Clothing type</small>
+                <div><i class=""></i>{{ post.question1 }}</div>
+            </div>
+            <div class="col-md-3 my-auto">
+                <small>Available quantity</small>
+                <div><i class="f"></i> {{ post.question1 }}</div>
+            </div>
+            <div class="col-md-3 my-auto">
+                <small>Available</small>
+                <div><i class=""></i> {{ post.question1 }} </div>
             </div>
         </div>
 
-
-        <div class="my-5">
-            <h5>Bible study summary</h5>
+        <div class="border-top border-bottom py-3">
+            <h5>Describe your product</h5>
             {% if post.summary %}
             <p class="article-content">{{ post.summary }}</p>
             {% else %}
             <p>No summary yet</p>
             {% endif %}
         </div>
-
-        <div class="my-5">
-            {% if post.energy_rating %}
-            <h5>BER Rating</h5>
-            <p class="article-content">{{ post.energy_rating }}</p>
-            {% else %}
-            <p>No BER Rating</p>
-            {% endif %}
-        </div>
-
-        {% if object.author != user%}
-            <div class="my-5">
-                <a  class="btn btn-info py-2 px-3"  href="{% url 'chatroom' post.author.pk %}">Message {{ post.author }}</a>
-            </div>
-        {% endif %}
-        <div class="row my-5 border-top border-bottom py-3">
-            <form method="POST" enctype='multipart/form-data'>
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Post Bible Study</legend>
-                    {{ comment |bootstrap }}
-
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">POST</button>
-                </div>
-            </form>
-        </div>
-
-{#         <div class="content-section w-75 mx-auto">#}
-{#            <form method="POST" enctype='multipart/form-data'>#}
-{#                {% csrf_token %}#}
-{#                <fieldset class="form-group">#}
-{#                    <legend class="border-bottom mb-4">Post Bible Study</legend>#}
-{#                    {{ comment |crispy }}#}
-{##}
-{#                </fieldset>#}
-{#                <div class="form-group">#}
-{#                    <button class="btn btn-outline-info" type="submit">POST</button>#}
-{#                </div>#}
-{#            </form>#}
-{#        </div>#}
     </div>
 </article>

@@ -17,6 +17,9 @@
         {% if request.user.username == user.username %}
             <div>
                 <button class="btn btn-outline-info" onclick="openNav()">Edit Profile</button>
+                <button class="btn btn-outline-info" >
+                    <a href="{% url 'post-create' %}" style="text-decoration: None;">Post New Stock</a>
+                </button>
             </div>
 
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+    {% block content %}
+        <div class="content-section w-75 mx-auto">
+            <form method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Stock Type</legend>
+                    {{ form|crispy }}
+                    <div class="div_id_post_images">
+                        <label for="id_post_images">
+                            Upload Images
+                        </label>
+                        <div class="">
+                            <input id="id_post_images" class="clearablefileinput form-control-file" accept="image/*" type="file" name="post_images" multiple>
+                            <small>You can upload multiple images.</small>
+                        </div>
+                    </div>
+
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">POST</button>
+                    <button class="btn btn-outline-danger" >
+                        <a href="{% url 'profile-page' request.user.username %}"> Cancel </a>
+                    </button>
+                </div>
+            </form>
+        </div>
+{% endblock content %}

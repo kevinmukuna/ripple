@@ -1,32 +1,40 @@
-{% load embed_video_tags %}
-<article class="media content-section">
-    <div class="media-body w-50">
-        <div class="article-metadata">
-            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-            <a class="mr-2" href="{% url 'profile-page' post.author.username %}">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted }}</small>
-        </div>
-        <!-- Content of the post -->
-        <div class="row">
-            {% if post.video %}
-            <div class="short-slider">
-                <!-- Slider and gallery -->
-                <ul id="lightSlider" class="gallery list-unstyled cS-hidden">
-                    {% video post.video %}
-                </ul>
+<div class="w-50 center">
+    <article class="media content-section">
+        <div class="media-body w-50">
+            <div class="article-metadata">
+                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+                <a class="mr-2" href="{% url 'profile-page' post.author.username %}">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted }}</small>
             </div>
-            {% endif %}
-            {% if post.post_images.all %}
-                <a class="mx-auto my-auto article-title" href="{% url 'post-detail' post.id %}">
-            {% else %}
-                <a class="mx-4 article-title" href="{% url 'post-detail' post.id %}">
-            {% endif %}
-            <h2 class="mt-3" style="color: inherit;">{{ post }}</h2>
-            <h5>Question 1 : {{ post.display_q1 }}</h5>
-            <h5>Question 2 : {{ post.display_q2 }}</h5>
-            <h5>Question 3 : {{ post.display_q3 }}</h5>
-            <small class="mb-5">Click to view post</small>
-            </a>
+            <!-- Content of the post -->
+            <div class="row">
+                {% if post.post_images.all %}
+                    <div class="short-slider">
+                        <!-- Slider and gallery -->
+                        <ul id="lightSlider" class="gallery list-unstyled cS-hidden">
+                            {% for img in post.post_images.all %}
+                                <li data-thumb="{{ img.image.url }}" data-source="{{ img.image.url }}">
+                                    <a href="{{ img.image.url }}">
+                                        <img src="{{ img.image.url }}"/>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
+                {% if post.post_images.all %}
+                    <a class="mx-auto my-auto article-title" href="{% url 'post-detail' post.id %}">
+                {% else %}
+                    <a class="mx-4 article-title" href="{% url 'post-detail' post.id %}">
+                {% endif %}
+                <h2 class="mt-3" style="color: inherit;">{{ post }}</h2>
+                <h5>Material/Fabric : {{ post.display_q1 }}</h5>
+                <h5>Item: {{ post.display_q2 }}</h5>
+                <h5>Quantity : {{ post.display_q3 }}</h5>
+                <small class="mb-5">Click to view post</small>
+                </a>
+            </div>
         </div>
-    </div>
-</article>
+    </article>
+</div>
