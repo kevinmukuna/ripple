@@ -1,4 +1,5 @@
-<div class="w-50 center">
+{#<div class=row">#}
+
     <article class="media content-section">
         <div class="media-body w-50">
             <div class="article-metadata">
@@ -11,15 +12,15 @@
                 {% if post.post_images.all %}
                     <div class="short-slider">
                         <!-- Slider and gallery -->
-                        <ul id="lightSlider" class="gallery list-unstyled cS-hidden">
-                            {% for img in post.post_images.all %}
-                                <li data-thumb="{{ img.image.url }}" data-source="{{ img.image.url }}">
-                                    <a href="{{ img.image.url }}">
-                                        <img src="{{ img.image.url }}"/>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
+{#                        <ul id="lightSlider" class="gallery list-unstyled cS-hidden">#}
+{#                            {% for img in post.post_images.all %}#}
+{#                                <li data-thumb="{{ img.image.url }}" data-source="{{ img.image.url }}">#}
+{#                                    <a href="{{ img.image.url }}">#}
+{#                                        <img src="{{ img.image.url }}"/>#}
+{#                                    </a>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+{#                        </ul>#}
                     </div>
                 {% endif %}
 
@@ -37,4 +38,4 @@
             </div>
         </div>
     </article>
-</div>
+{#</div>#}

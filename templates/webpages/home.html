@@ -24,7 +24,16 @@
 <section class="mx-auto my-5" id="all_posts" >
     <h2 class="text-center">Latest Merchandise</h2>
     {% for post in posts %}
-    {% include 'webpages/short_post.html' %}
+        {% if forloop.first %}
+            <div class="row">
+        {% endif %}
+         <div class="col-md-4 col-sm-6 col-xs-12">
+             {% include 'webpages/short_post.html' %}
+         </div>
+        {% if forloop.counter|divisibleby:3 %}
+            </div><div class="row">
+        {% endif %}
+    {% if forloop.last %}</div>{% endif %}
     {% endfor %}
     {% include 'webpages/pagination.html' %}
 </section>
