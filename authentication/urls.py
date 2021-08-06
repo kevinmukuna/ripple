@@ -18,7 +18,7 @@ urlpatterns = [
     path('redirect/', views.redirectpages, name="redirect"),
     path('login/', LoginView.as_view(), name="login"),
     path('user/<str:username>', views.dashboard_profile, name='dashboard_profile'),
-    path('user/<str:username>', views.profile, name='profile-page'),
+    path('company/<str:username>', views.profile, name='profile-page'),
     path('logout/', LogoutView.as_view(), name="logout"),
 
 ]
