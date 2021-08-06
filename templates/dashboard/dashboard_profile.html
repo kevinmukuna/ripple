@@ -1,0 +1,164 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% load static %}
+{% block content %}
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <h1> Stats and Insights </h1>
+        <hr>
+        <small>Ripple Sale Summary</small>
+        <hr>
+        <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div id="myBtn5" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    User Name
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ user.username }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myBtn6" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Admin Name
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ user.first_name }} {{ user.last_name }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myBtn7" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Company Name
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ user.company }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div id="myBtn5" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Address address
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ user.address }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myBtn6" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Contact Number
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ user.contact_number }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myBtn7" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Email address
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    {{ user.email }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div id="myBtn5" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    User Name
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myBtn6" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Contact Number
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="myBtn7" class="col-xl-4 col-md-8 mb-6">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Email address
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}

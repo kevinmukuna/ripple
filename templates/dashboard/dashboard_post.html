@@ -1,0 +1,36 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="content-section">
+                    <h2 class="mb-3">Your Posts</h2>
+                    {% if posts %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for post in posts %}
+                                    <tr>
+                                        <th><a href="{% url 'post-detail' post.id %}">{{ post }}</a></th>
+                                        <th>
+                                            <a class="btn-info btn-sm" href="{% url 'post-update' post.id %}">Edit</a>
+                                            <a class="btn-danger btn-sm" href="{% url 'post-delete' post.id %}">Delete</a>
+                                        </th>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        
+                    {% else %}
+                        <p>You have no post</p>
+                    {% endif %}
+                </div>
+            </div>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+{% endblock content %}
