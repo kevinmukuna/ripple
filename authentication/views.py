@@ -10,7 +10,7 @@ import json
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth import login
-from django.contrib.auth.models import User
+from .models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.http import JsonResponse, HttpResponse
@@ -52,6 +52,10 @@ class RegistrationView(View):
         last_name = request.POST['last_name']
         email = request.POST['email']
         password = request.POST['password']
+        company_address = request.POST['company_address']
+        company_name = request.POST['company_name']
+        company_number = request.POST['company_number']
+        company_reg = request.POST['company_reg']
 
         context = {
             'fieldValues': request.POST
@@ -67,7 +71,12 @@ class RegistrationView(View):
                     username=username,
                     first_name=first_name,
                     last_name=last_name,
-                    email=email
+                    email=email,
+                    company_name=company_name,
+                    company_address=company_address,
+                    company_number=company_number,
+                    company_reg=company_reg,
+
                 )
                 user.set_password(password)
                 user.is_active = False
@@ -290,3 +299,44 @@ def profile(request, username):
         return render(request, 'authentication/profile.html', {'user': person})
 
 
+def dashboard_profile(request, username):
+    """
+    creating an instance of both
+            userformUpdate and profileUpdateform
+    storing in the current user details in
+        u_form and p_form for profile
+        picture within the first if condition
+    this is so that the user can see the older
+    credentials when they change to new,
+
+    the 2nd if conditions saves the details if
+    both forms are valid regardless of which form is changed
+
+    :param request:
+    :param username:
+    :return: if updated redirect
+    """
+
+    if request.user.is_authenticated and username == request.user.username:
+        if request.method == 'POST':
+            u_form = UserUpdateForm(request.POST, instance=request.user)
+            p_form = ProfileUpdateForm(request.POST,
+                                       request.FILES,
+                                       instance=request.user.profile)
+            if u_form.is_valid() and p_form.is_valid():
+                u_form.save()
+                p_form.save()
+                messages.success(request, f'Your account has been updated')
+                person = User.objects.get(username=username)
+                return redirect('dashboard_profile', person)
+        else:
+            u_form = UserUpdateForm(instance=request.user)
+            p_form = ProfileUpdateForm(instance=request.user.profile)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form
+        }
+        return render(request, 'dashboard/dashboard_profile.html', context)
+    else:
+        person = User.objects.get(username=username)
+        return render(request, 'dashboard/dashboard_profile.html', {'user': person})

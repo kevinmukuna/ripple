@@ -9,11 +9,11 @@
                 <legend class="border-bottom mb-4">Register a free account</legend>
                 <div class="mx-auto w-75">
                     {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
-                    </div>
-                    {% endfor %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                     {% endif %}
                 </div>
 
@@ -25,7 +25,7 @@
                             name="username"
                             placeholder="username"
                             id="usernameField"
-                            value="{{fieldValues.username}}"
+                            value="{{ fieldValues.username }}"
                             class="textinput textInput form-control"
                     />
                 </div>
@@ -40,7 +40,7 @@
                             name="first_name"
                             placeholder="First Name"
                             id="first_name"
-                            value="{{fieldValues.first_name}}"
+                            value="{{ fieldValues.first_name }}"
                             class="textinput textInput form-control"
                     />
                 </div>
@@ -53,7 +53,7 @@
                             name="last_name"
                             placeholder="Last Name"
                             id="last_name"
-                            value="{{fieldValues.last_name}}"
+                            value="{{ fieldValues.last_name }}"
                             class="textinput textInput form-control"
                     />
                 </div>
@@ -65,9 +65,62 @@
                             placeholder="Email"
                             class="textinput textInput form-control"
                             id="emailField"
-                            value="{{fieldValues.email}}"
+                            value="{{ fieldValues.email }}"
                     />
                 </div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="company_name"
+                            placeholder="Company Name"
+                            id="company_name"
+                            value="{{ fieldValues.company_name }}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="company_address"
+                            placeholder="Company address"
+                            id="company_address"
+                            value="{{ fieldValues.company_address }}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="company_number"
+                            placeholder="Company Contact Number"
+                            id="company_number"
+                            value="{{ fieldValues.company_number }}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <input
+                            maxlength="150"
+                            required=""
+                            type="text"
+                            name="company_reg"
+                            placeholder="Company Registration Number"
+                            id="company_reg"
+                            value="{{ fieldValues.company_reg }}"
+                            class="textinput textInput form-control"
+                    />
+                </div>
+
 
                 <div class="emailFeedBackArea invalid-feedback" style="display:none">
                 </div>
@@ -81,14 +134,15 @@
                             class="textinput textInput form-control"
                             id="passwordField"
                     />
-                    
+
                 </div>
                 <div class="passwordFeedBackArea invalid-feedback" style="display:none">
                 </div>
 
                 <small class="float-right py-3 showPasswordToggle">SHOW PASSWORD</small>
 
-                <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn" style="background: #5f788a; border: none" />
+                <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn"
+                       style="background: #5f788a; border: none"/>
             </form>
             <div class="border-top pt-3">
                 <small class="text-muted">
@@ -97,5 +151,5 @@
             </div>
         </div>
     </div>
-<script src="{% static 'js/register.js' %}"></script>
+    <script src="{% static 'js/register.js' %}"></script>
 {% endblock content %}

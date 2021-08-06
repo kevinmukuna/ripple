@@ -1,6 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from PIL import Image
+
+
+class User(AbstractUser):
+    # image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    company_address = models.CharField(max_length=100, help_text='Company address', default="No Address")
+    company_name = models.CharField(max_length=100, help_text='Company Name', default="No Company")
+    company_number = models.CharField(max_length=100, help_text='Company Number', default="No Number")
+    company_reg = models.CharField(max_length=100, help_text='Company Registration')
 
 
 class Profile(models.Model):
@@ -26,4 +34,3 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
-
