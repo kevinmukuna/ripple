@@ -1,12 +1,20 @@
 {% extends "dashboard/dashboard_base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
 
     <!-- Main Content -->
     <div class="container-fluid">
-        <h1> Stats and Insights </h1>
+        <h1> {{ user.company }} Dashboard</h1>
         <hr>
-        <small>Ripple Sale Summary</small>
+        <di class="row">
+            <div class="col-md-6 col-sm-6">
+                <small>Company Details</small>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <button class="float-right btn btn-outline-info" onclick="openNav()">Edit Profile</button>
+            </div>
+        </di>
         <hr>
         <div class="row">
             <!-- Earnings (Monthly) Card Example -->
@@ -160,5 +168,41 @@
             </div>
         </div>
 
+        {#            {% if request.user.username == user.username %}#}
+        {#            <div>#}
+        {#                <button class="btn btn-outline-info" onclick="openNav()">Edit Profile</button#}
+        {#            </div>#}
+        {##}
+        {##}
+                    <div id="myNav" class="overlay">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div class="overlay-content">
+                            <!-- FORM HERE -->
+                            <!-- enctype is used for saving images in data    -->
+                            <div class="container">
+                                <form method="POST" enctype="multipart/form-data" class="update-profile">
+                                    {% csrf_token %}
+                                    <fieldset class="form-group">
+                                        <legend class="border-bottom mb-4">Profile Info</legend>
+                                        {{ u_form|crispy }}
+                                        {{ p_form|crispy }}
+                                    </fieldset>
+                                    <div class="form-group">
+                                        <button class="btn btn-outline-info" type="submit">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+        {#        {% endif %}#}
+        <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
     </div>
 {% endblock content %}

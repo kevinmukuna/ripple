@@ -5,13 +5,13 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <div class="content-section">
-                    <h2 class="mb-3">Your Posts</h2>
+                    <h2 class="mb-3">Your Stocks</h2>
                     {% if posts %}
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Address</th>
-                                    <th>Actions</th>
+                                    <th>Stock Type</th>
+                                    <th class="float-right">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -19,8 +19,8 @@
                                     <tr>
                                         <th><a href="{% url 'post-detail' post.id %}">{{ post }}</a></th>
                                         <th>
-                                            <a class="btn-info btn-sm" href="{% url 'post-update' post.id %}">Edit</a>
-                                            <a class="btn-danger btn-sm" href="{% url 'post-delete' post.id %}">Delete</a>
+                                            <a class="btn-info btn-sm float-right" href="{% url 'post-update' post.id %}">Edit</a>
+                                            <a class="btn-danger btn-sm float-right" href="{% url 'post-delete' post.id %}">Delete</a>
                                         </th>
                                     </tr>
                                 {% endfor %}

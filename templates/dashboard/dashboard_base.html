@@ -22,8 +22,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{% static 'css/dashboard/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
     <style>
-        .myowncolor{
+        .myowncolor {
             background-color: #7f5a83;
             background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
         }
@@ -42,10 +44,11 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center mb-3" href="{% url 'home-page' %}">
             <img style="height: 23px; vertical-align: baseline;" src="">
+            <i class="fas fa-home"></i>
             <span class="sidebar-brand">Ripple</span>
         </a>
 
-                <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
@@ -57,14 +60,14 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'dashboard' %}">
                 <i class="fas fa-chart-line"></i>
-                <span >Dashboard</span>
+                <span>Dashboard</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link" href="{% url 'function' %}">
                 <i class="fas fa-chart-line"></i>
-                <span >Stats and Insights</span>
+                <span>Stats and Insights</span>
             </a>
         </li>
 
@@ -80,25 +83,36 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'dashboard_profile' request.user.username %}">
                 <i class="fas fa-laugh-wink"></i>
-                <span >My Profile</span>
+                <span>My Profile</span>
             </a>
         </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{% url 'dashboard-post' %}">
                 <i class="fas fa-home"></i>
-                <span>My posts</span>
+                <span>My Stocks</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard-post' %}">
+                <i class="fas fa-home"></i>
+                <span>Events</span>
             </a>
         </li>
 
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'dashboard-post' %}">
+                <i class="fas fa-home"></i>
+                <span>Status</span>
+            </a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'confirm-delete-user' %}" >
+            <a class="nav-link" href="{% url 'confirm-delete-user' %}">
                 <i class="fas fa-times"></i>
                 <span>delete account</span>
             </a>
@@ -160,6 +174,13 @@
                                 </div>
                             </form>
                         </div>
+                    </li>
+
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="{% url 'post-create' %}" role="button"
+                           >
+                            <i class="btn btn-outline-info" style="text-decoration: None;">New Post</i>
+                        </a>
                     </li>
 
                     <!-- Nav Item - Alerts -->
@@ -235,7 +256,8 @@
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
@@ -247,7 +269,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
@@ -259,11 +282,11 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
-
 
 
                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -316,7 +339,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="card-footer flex-column text-center" >
+        <footer class="card-footer flex-column text-center">
             <div class="navbar navbar-expand navbar-light justify-content-center">
                 <ul class="list-unstyled navbar-nav">
                     <li class="nav-item"><a
@@ -392,7 +415,7 @@
     // getting the data from the views, and storing the dict value in a var as array
     // then stripping the special characters of it and coventing it to int
     var renderedData = "{{value4.estimate}}";
-    var estimatedData = renderedData.split(",").map(function(item) {
+    var estimatedData = renderedData.split(",").map(function (item) {
         var desired = item.replace(/[^0-9]/g, '');
         return parseInt(desired, 10);
     });
@@ -406,7 +429,7 @@
             sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
             dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
             s = '',
-            toFixedFix = function(n, prec) {
+            toFixedFix = function (n, prec) {
                 var k = Math.pow(10, prec);
                 return '' + Math.round(n * k) / k;
             };
@@ -472,7 +495,7 @@
                         maxTicksLimit: 5,
                         padding: 10,
                         // Include a dollar sign in the ticks
-                        callback: function(value, index, values) {
+                        callback: function (value, index, values) {
                             return '$' + number_format(value);
                         }
                     },
@@ -503,7 +526,7 @@
                 mode: 'index',
                 caretPadding: 10,
                 callbacks: {
-                    label: function(tooltipItem, chart) {
+                    label: function (tooltipItem, chart) {
                         var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
                         return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
                     }
