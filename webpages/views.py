@@ -1,18 +1,24 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.shortcuts import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
+from django.contrib.auth.models import User
 
 from .models import Post, PostImage
 
 POST_FIELDS = [
     'title',
-    'question1',
-    'question2',
-    'question3',
+    'material_type',
+    'clothing_type',
+    'item_size',
+    'item_gender',
+    'available_quantity',
+    'quantity_weight',
     'summary',
+
 ]
 
 
@@ -22,6 +28,44 @@ def aboutfunction(request):
     render the specified template
     """
     return render(request, 'webpages/about.html', {'title': 'About'})
+
+
+@login_required(login_url='/login/')
+def dashboardfunction(request, **kwargs):
+    """
+        this function will display the average  selling price, estimated price and how much your properties worth
+        this is displayed on the top in dashboard just below search menu
+
+        month_price --> get the sum of estimated price of a specific user
+        average_average --> average estimated price of a specific user posts
+        assert_properties -->  sum of estimated prices
+
+        if a user has no post return zeros else do the calculations and return the matrices and render it to the site
+    """
+    user = User.objects.get(username=request.user)
+    post_count = float(Post.objects.count())
+    print(post_count)
+    value1 = {}
+    value2 = {}
+    value3 = {}
+    value = {}
+
+    value = {
+        "value1": value1,
+        "value2": value2,
+        "value3": value3,
+        "value4": 0
+    }
+
+    return render(request, 'dashboard/dashboard.html', value)
+
+
+@login_required(login_url='/login/')
+def dashboard_user_functionality(request):
+    """
+        render the specified template
+    """
+    return render(request, 'dashboard/all_user_function.html')
 
 
 class PostListView(ListView):
@@ -118,3 +162,24 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+
+
+class UserPostListView(LoginRequiredMixin,ListView):
+    """
+        model: name of model, in this case post
+        template_name: name of templates, in this case user_posts.html
+        context_object_name: name of the object u want in the template in this case posts'
+        paginate_by: how many post you want in each page, in this case 5
+
+    """
+    model = Post
+    template_name = 'dashboard/dashboard_post.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        """
+            this function get the user if they exist else it returns 404 --> this function is used to filter and display
+            a requested user
+            filter by the user requested and sort by the latest post
+        """
+        return Post.objects.filter(author=self.request.user).order_by('-date_posted')
