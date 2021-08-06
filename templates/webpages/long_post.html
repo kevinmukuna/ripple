@@ -6,7 +6,7 @@
         <!-- Information about the post -->
         <div class="article-metadata">
             <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-            <a class="mr-2" href="{% url 'profile-page' post.author.username %}">{{ post.author }}</a>
+            <a class="mr-2" href="{% url 'profile-page' post.author.username %}">{{ post.author.company_name }}</a>
             <small class="text-muted my-auto">{{ post.date_posted|date:"F d, Y" }}</small>
             {% url 'post-detail' object.id as post_url %}
             {% if request.get_full_path == post_url and object.author == user%}

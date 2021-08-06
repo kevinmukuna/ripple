@@ -7,11 +7,11 @@
             <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" />
         </div>
         <div class="d-flex flex-column my-auto">
-            <h2>{{ user.username }}</h2>
+            <h2>{{ user.company_name }}</h2>
             {% if request.user.is_authenticated %}
             <p class="text-secondary">{{ user.email }}</p>
             {% else %}
-            <p class="text-secondary">Log-in to contact or comment on {{ user.username }}'s post</p>
+            <p class="text-secondary">Log-in to contact {{ user.company_name }}</p>
             {% endif %}
             <!--  the button is used for overlay curtain display      -->
         {% if request.user.username == user.username %}
@@ -19,6 +19,9 @@
                 <button class="btn btn-outline-info" onclick="openNav()">Edit Profile</button>
                 <button class="btn btn-outline-info" >
                     <a href="{% url 'post-create' %}" style="text-decoration: None;">Post New Stock</a>
+                </button>
+                <button class="btn btn-outline-info" >
+                    <a href="" style="text-decoration: None;">Company Dashboard</a>
                 </button>
             </div>
 
@@ -48,14 +51,14 @@
     </div>
     
     <div class="content-section">
-        <h2 class="mb-3">{{ user.username }}'s Posts</h2>
+        <h2 class="mb-3">{{ user.company_name }}'s Posts</h2>
         {% if user.user_posts.all %}
             {% for post in user.user_posts.all reversed %}
                 {% include 'webpages/short_post.html' %} 
             {% endfor %}
             {% include 'webpages/pagination.html' %}
         {% else %}
-            <p>{{ user.username }} has no post</p>
+            <p>{{ user.company_name }} has no post</p>
         {% endif %}
     </div>
         
