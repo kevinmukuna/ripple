@@ -15,13 +15,13 @@
                     <a class="btn-danger btn-sm py-2 px-4" href="{% url 'post-delete' object.id %}">Delete</a>
                 </div>
             {% else %}
-                <div class="float-right">
-                    <a  class="btn-info btn-sm py-2 px-4"  href="{% url 'chatroom' post.author.pk %}">Message {{ post.author }}</a>
-                </div>
-            <div class="float-right">
-                <a class="btn-info btn-sm" href="{% url 'post-update' object.id %}">Edit</a>
-                <a class="btn-danger btn-sm" href="{% url 'post-delete' object.id %}">Delete</a>
-            </div>
+{#                <div class="float-right">#}
+{#                    <a  class="btn-info btn-sm py-2 px-4"  href="{% url 'chatroom' post.author.pk %}">Message {{ post.author }}</a>#}
+{#                </div>#}
+{#            <div class="float-right">#}
+{#                <a class="btn-info btn-sm" href="{% url 'post-update' object.id %}">Edit</a>#}
+{#                <a class="btn-danger btn-sm" href="{% url 'post-delete' object.id %}">Delete</a>#}
+{#            </div>#}
             {% endif %}
         </div>
         <!-- Content of the post -->
@@ -43,29 +43,29 @@
         <div class="row my-5 border-top border-bottom py-3">
             <div class="col-md-3 my-auto">
                 <small>Material type</small>
-                <div><i class=""></i> {{ post.question1 }}</div>
+                <div><i class=""></i> {{ post.material_type }}</div>
             </div>
             <div class="col-md-3 my-auto">
                 <small>Clothing type</small>
-                <div><i class=""></i>{{ post.question1 }}</div>
+                <div><i class=""></i>{{ post.clothing_type }}</div>
             </div>
             <div class="col-md-3 my-auto">
                 <small>Available quantity</small>
-                <div><i class="f"></i> {{ post.question1 }}</div>
+                <div><i class="f"></i> {{ post.available_quantity }}</div>
             </div>
             <div class="col-md-3 my-auto">
-                <small>Available</small>
-                <div><i class=""></i> {{ post.question1 }} </div>
+                <small>Quantity Weight</small>
+                <div><i class=""></i> {{ post.quantity_weight }} </div>
             </div>
         </div>
         <div class="row my-5 border-top border-bottom py-3">
             <div class="col-md-3 my-auto">
-                <small>Material type</small>
-                <div><i class=""></i> {{ post.question1 }}</div>
+                <small>Item Size</small>
+                <div><i class=""></i> {{ post.item_size }}</div>
             </div>
             <div class="col-md-3 my-auto">
-                <small>Clothing type</small>
-                <div><i class=""></i>{{ post.question1 }}</div>
+                <small>Item Gender</small>
+                <div><i class=""></i>{{ post.item_gender }}</div>
             </div>
             <div class="col-md-3 my-auto">
                 <small>Available quantity</small>
