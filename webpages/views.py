@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin
-from django.contrib.auth.models import User
+from authentication.models import User
 
 from .models import Post, PostImage
 
