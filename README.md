@@ -28,7 +28,7 @@ after cloning this repo for:
 >> `python manage.py makemigrations`
 >> `python manage.py migrate`
 > - creat a super user 
->> `python manage.py createsuperuser` for the steps
+>> `python manage.py createsuperuser` follow the steps 
 > - run a server
 >>  `python manage.py runserver`
 > go to your browser and type http://127.0.0.1:8000/
