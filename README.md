@@ -9,7 +9,12 @@ after cloning this repo for:
 >> ...... coming soon 
 
 > Windows:
-> - install/download python https://www.python.org/downloads/
+> - install/download git if not already installed  https://git-scm.com/download/win
+> - install/download python if not already installed https://www.python.org/downloads/
+> - open your command prompt(cmd) 
+> - clone this project using the command below
+>> `git clone  https://github.com/kevinmukuna/ripple.git`
+> - change into ripple directory
 >> `cd ripple`
 > - create virtual environment 
 >> `python3 -m venv ./venv`
@@ -18,7 +23,7 @@ after cloning this repo for:
 > - upgrade or install pip 
 >> `python -m pip install --upgrade pip`
 > - install the dependencies
->> `python -m pip install --upgrade pip`  
+>> `pip install -r requirements.txt`  
 > - run these 2 commands
 >> `python manage.py makemigrations`
 >> `python manage.py migrate`
