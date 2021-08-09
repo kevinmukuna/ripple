@@ -15,7 +15,7 @@
         <!-- Content of the post -->
         <div class="row">
             {% if post.post_images.all %}
-                <div class="short-slider col-sm-6">
+                <div class="short-slider col-sm-4">
                     <!-- Slider and gallery, only showing the first image on the home page-->
                     <ul id="lightSlider" class="gallery list-unstyled cS-hidden">
                         {% for img in post.post_images.all|slice:"0:1" %}
