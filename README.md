@@ -1,8 +1,5 @@
 # ripple
 
----
-
-after cloning this repo for:
 
 ----
 > Unix:
