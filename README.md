@@ -13,7 +13,7 @@
 >> `git clone  https://github.com/kevinmukuna/ripple.git`
 > - change into ripple directory
 >> `cd ripple`
-> - create virtual environment 
+> - create virtual environment \ or pyenv locl your//0oyrnv 
 >> `python3 -m venv ./venv`
 > - activate the virtual env
 >> `source venv/bin/activate`
