@@ -1,42 +1,129 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+
+{% endblock %}
 {% block content %}
-    <div class="mx-auto w-50">
-        <div class="content-section">
-            <form action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                <legend class="border-bottom mb-4">Login</legend>
-                <div class="form-group">
-                    <input
-                            type="text"
-                            name="username"
-                            placeholder="username"
-                            id="usernameField"
-                            value="{{fieldValues.username}}"
-                            class="form-control form-control-sm"
-                    />
+    {#    <div class="mx-auto w-50">#}
+    {#        <div class="content-section">#}
+    {#            <form action="{% url 'login' %}" method="post">#}
+    {#                {% csrf_token %}#}
+    {#                <legend class="border-bottom mb-4">Login</legend>#}
+    {#                <div class="form-group">#}
+    {#                    <input#}
+    {#                            type="text"#}
+    {#                            name="username"#}
+    {#                            placeholder="username"#}
+    {#                            id="usernameField"#}
+    {#                            value="{{fieldValues.username}}"#}
+    {#                            class="form-control form-control-sm"#}
+    {#                    />#}
+    {#                </div>#}
+    {#                <div class="form-group">#}
+    {#                    <input#}
+    {#                            type="password"#}
+    {#                            name="password"#}
+    {#                            placeholder="Password"#}
+    {#                            class="form-control form-control-sm"#}
+    {#                            id="passwordField"#}
+    {#                    />#}
+    {#                </div>#}
+    {#                <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" style="background: #5f788a; border:none; "/>#}
+    {#            </form>#}
+    {#            <div class="border-top pt-3">#}
+    {#                <small class="text-muted d-block">#}
+    {#                    Register a new Account? <a class="ml-2" href="{% url 'register-page' %}">Register</a>#}
+    {#                </small>#}
+    {#                <small class="text-muted d-block">#}
+    {#                    Forgot Password? <a class="ml-2" href="{% url 'password_reset' %}">Reset password</a>#}
+    {#                </small>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+					<span class="login100-form-title p-b-43">
+						Login to continue
+					</span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+
+                        <input class="input100"
+                                type="text"
+                                name="username"
+{#                                placeholder="username"#}
+                                id="usernameField"
+                                value="{{fieldValues.username}}"
+                                class="form-control form-control-sm"
+                        >
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Username</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100"
+                                type="password"
+                                name="password"
+                                id="passwordField"
+                        />
+
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div>
+                            <a href="{% url 'password_reset' %}" class="txt1">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <input class="login100-form-btn submit-btn" type="submit" value="Login" style="background: #333333; border:none;">
+{#                            Login#}
+{#                        </input>#}
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+						<span class="txt2">
+                            <a class="ml-2" href="{% url 'register-page' %}">sign up</a>
+						</span>
+                    </div>
+
+                    <div class="login100-form-social flex-c-m">
+                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('{% static 'img/about-us.jpeg' %}')">
                 </div>
-                <div class="form-group">
-                    <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            class="form-control form-control-sm"
-                            id="passwordField"
-                    />
-                </div>
-                <input type="submit" value="Login" class="btn btn-block btn-primary submit-btn" style="background: #5f788a; border:none; "/>
-            </form>
-            <div class="border-top pt-3">
-                <small class="text-muted d-block">
-                    Register a new Account? <a class="ml-2" href="{% url 'register-page' %}">Register</a>
-                </small>
-                <small class="text-muted d-block">
-                    Forgot Password? <a class="ml-2" href="{% url 'password_reset' %}">Reset password</a>
-                </small>
             </div>
         </div>
     </div>
-<script src="{% static 'js/register.js' %}"></script>
+
+    <script src="{% static 'js/register.js' %}"></script>
 
 {% endblock content %}

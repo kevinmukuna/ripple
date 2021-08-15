@@ -21,6 +21,8 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    {% block styles %}
+    {% endblock %}
     <title>Ripple</title>
 </head>
 <body>
@@ -63,11 +65,12 @@
         </div>
     </nav>
 </header>
+<div style=""></div>
 {% url 'search-page' as search_url %}
 {% if request.path == search_url %}
     <main role="main" class="container-fluid">
 {% else %}
-    <main role="main" class="container-fluid">
+    <main role="main" class="container-fluid" style="padding-left: 0">
 {% endif %}
 <div class="mx-auto w-1">
     {% if messages %}
