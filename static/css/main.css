@@ -4,10 +4,15 @@ body {
     background: #fafafa;
     color: #333333;
 }
-
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 main {
     min-height: 100vh;
-    margin-top: 4rem;
+    /*margin-top: 4rem;*/
     margin-bottom: -88px;
 }
 
